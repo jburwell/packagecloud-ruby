@@ -171,7 +171,7 @@ module Packagecloud
 
     def master_tokens(repo)
       assert_valid_repo_name(repo)
-      response = get("/api/v1/repos/#{username}/#{repo}/master_tokens")
+      response = get("/api/v1/repos/#{username}/#{repo}/master_tokens.json")
       parsed_json_result(response)
     end
 
