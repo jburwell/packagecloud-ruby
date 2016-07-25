@@ -169,6 +169,18 @@ module Packagecloud
       end
     end
 
+    def master_tokens(repo)
+      assert_valid_repo_name(repo)
+      response = get("/api/v1/repos/#{username}/##{repo}/master_tokens")
+      parsed_json_result(response)
+    end
+
+    def create_master_token(repo, name)
+      assert_valid_repo_name(repo)
+      response = post("/api/v1/repos/#{username}/#{repo}/master_tokens", "master_token[name]=#{name}", "application/x-www-url-encoded")
+      parsed_json_result(response)
+    end
+
     def create_read_tokens(repo, master_token_id, read_token_name)
       assert_valid_repo_name(repo)
       url = "/api/v1/repos/#{username}/#{repo}/master_tokens/#{master_token_id}/read_tokens.json"
