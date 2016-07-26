@@ -177,7 +177,7 @@ module Packagecloud
 
     def create_master_token(repo, master_token_name)
       assert_valid_repo_name(repo)
-      form_data = URI.encode_www_form :master_token => { :name => master_token_name }
+      form_data = URI.encode_www_form { :master_token => { :name => master_token_name } }
       response = post("/api/v1/repos/#{username}/#{repo}/master_tokens", form_data, "application/x-www-url-encoded")
       parsed_json_result(response)
     end
