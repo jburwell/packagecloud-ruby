@@ -177,7 +177,7 @@ module Packagecloud
 
     def create_master_token(repo, master_token_name)
       assert_valid_repo_name(repo)
-      response = post("/api/v1/repos/#{username}/#{repo}/master_tokens", "master_token[name]=#{master_token_name}", "application/x-www-form-encoded")
+      response = post("/api/v1/repos/#{username}/#{repo}/master_tokens", "master_token[name]=#{master_token_name}", "application/x-www-form-urlencoded")
       parsed_json_result(response)
     end
 
