@@ -175,9 +175,10 @@ module Packagecloud
       parsed_json_result(response)
     end
 
-    def create_master_token(repo, name)
+    def create_master_token(repo, master_token_name)
       assert_valid_repo_name(repo)
-      response = post("/api/v1/repos/#{username}/#{repo}/master_tokens", "master_token[name]=#{name}", "application/x-www-url-encoded")
+      form_data = URI.encode_www_form :master_token => { :name => master_token_name }
+      response = post("/api/v1/repos/#{username}/#{repo}/master_tokens", form_data, "application/x-www-url-encoded")
       parsed_json_result(response)
     end
 
@@ -232,6 +233,10 @@ module Packagecloud
 
       def post(url, body, content_type="application/json")
         request(url, :post, body, content_type)
+      end
+
+      def post_form(url, params)
+
       end
 
       def get(url)
