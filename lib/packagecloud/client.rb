@@ -256,7 +256,7 @@ module Packagecloud
           request_params.merge!({ :body => body })
         end
 
-        puts "Packagecloud #{method} from #{url} with headers #{headers}"
+        puts "Packagecloud #{method} from #{url} with request_params #{request_params}"
         @excon.request(request_params.merge({:read_timeout => connection.read_timeout, :write_timeout => connection.write_timeout }))
       end
 
